@@ -11,61 +11,79 @@
 <h:body>
 
 	<h:form id="formPessoa">
-	
+
 		<h1>Projeto JSF</h1>
+
+		<h:panelGrid columns="2">
+
+			<f:facet name="header">
+				<h:outputText value="Cadastro JSF" />
+			</f:facet>
+
+			<h:outputLabel value="Id: " />
+			<h:inputText readonly="true" value="#{pessoaBean.pessoa.id}" />
+
+			<h:outputLabel value="Nome: " />
+			<h:inputText value="#{pessoaBean.pessoa.nome}" />
+
+			<h:outputLabel value="Sobrenome: " />
+			<h:inputText value="#{pessoaBean.pessoa.sobreNome}" />
+
+			<h:outputLabel value="Idade: " />
+			<h:inputText value="#{pessoaBean.pessoa.idade}" />
+
+
+			<h:outputLabel value=""/>
+			<h:panelGroup>
+				<h:commandButton value="Novo" action="#{pessoaBean.novo}" />
+				<h:commandButton value="Salvar" action="#{pessoaBean.salvar}" />
+				<h:commandButton value="Deletar" action="#{pessoaBean.deletar}" />
+			</h:panelGroup>
+
+
+		</h:panelGrid>
+
+
+
+		<h:dataTable value="#{pessoaBean.pessoas}" var="p" border="1" cellpadding="6">
 		
-		<h:outputLabel value="Id: " />
-		<h:inputText readonly="true" value="#{pessoaBean.pessoa.id}"/>
-		
-		<br/>
-		<h:outputLabel value="Nome: " />
-		<h:inputText value="#{pessoaBean.pessoa.nome}"/>
-		
-		<br/>
-		<h:outputLabel value="Sobrenome: " />
-		<h:inputText value="#{pessoaBean.pessoa.sobreNome}"/>
-		
-		<br/>
-		<h:outputLabel value="Idade: " />
-		<h:inputText value="#{pessoaBean.pessoa.idade}"/>
-		<!-- 
-		<br/>
-		<h:outputLabel value="Data de Nascimento: " />
-		<h:inputText value="#{pessoaBean.pessoa.dataNascimento}"/>
-		 -->
-		<br/>
-		<h:commandButton value="Novo" action="#{pessoaBean.novo}"  />
-		<h:commandButton value="Salvar" action="#{pessoaBean.salvar}"  />
-		<h:commandButton value="Deletar" action="#{pessoaBean.deletar}"  />
-		
-		<h:dataTable value="#{pessoaBean.pessoas}" var="p">
-		
-		<h:column>
-		<h:outputText value="#{p.id}" />
-		</h:column>
-		
-		<h:column>
-		<h:outputText value="#{p.nome}" />
-		</h:column>
-		
-		<h:column>
-		<h:outputText value="#{p.sobreNome}" />
-		</h:column>
-		
-		<h:column>
-		<h:commandLink value="Editar">
-		<f:setPropertyActionListener value="#{p}" target="#{pessoaBean.pessoa}"/>
-		</h:commandLink>
-		</h:column>
-		
-		<h:column>
-		<h:commandLink value="Remover"  action="#{pessoaBean.deletar}">
-		<f:setPropertyActionListener value="#{p}" target="#{pessoaBean.pessoa}"/>
-		</h:commandLink>
-		</h:column>
-		
+		<f:facet name="header">
+		Lista de pessoas cadastradas
+		</f:facet>
+
+			<h:column>
+			<f:facet name="header">ID</f:facet>
+				<h:outputText value="#{p.id}" />
+			</h:column>
+
+			<h:column>
+			<f:facet name="header">Nome</f:facet>
+				<h:outputText value="#{p.nome}" />
+			</h:column>
+
+			<h:column>
+			<f:facet name="header">Sobrenome</f:facet>
+				<h:outputText value="#{p.sobreNome}" />
+			</h:column>
+
+			<h:column>
+			<f:facet name="header">Ação</f:facet>
+				<h:commandLink value="Editar">
+					<f:setPropertyActionListener value="#{p}"
+						target="#{pessoaBean.pessoa}" />
+				</h:commandLink>
+			</h:column>
+
+			<h:column>
+			<f:facet name="header">Ação</f:facet>
+				<h:commandLink value="Remover" action="#{pessoaBean.deletar}">
+					<f:setPropertyActionListener value="#{p}"
+						target="#{pessoaBean.pessoa}" />
+				</h:commandLink>
+			</h:column>
+
 		</h:dataTable>
-		
+
 	</h:form>
 </h:body>
 
