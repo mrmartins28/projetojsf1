@@ -36,6 +36,22 @@
 		<h:commandButton value="Salvar" action="#{pessoaBean.salvar}"  />
 		<h:commandButton value="Deletar" action="#{pessoaBean.deletar}"  />
 		
+		<h:dataTable value="#{pessoaBean.pessoas}" var="p">
+		
+		<h:column>
+		<h:outputText value="#{p.id}" />
+		</h:column>
+		
+		<h:column>
+		<h:outputText value="#{p.nome}" />
+		</h:column>
+		
+		<h:column>
+		<h:outputText value="#{p.sobreNome}" />
+		</h:column>
+		
+		</h:dataTable>
+		
 	</h:form>
 </h:body>
 
