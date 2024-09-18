@@ -8,23 +8,33 @@
 </h:head>
 
 <h:body>
-	<h:form>
-		Nome:
-		<h:inputText id="campoNome" value="#{PessoaBean.nome}" />
-		<br />
-		Sobrenome:
-		<h:inputText id="campoSobrenome" value="#{PessoaBean.sobrenome}" />
-		<br />
-		<h:commandButton value="mostrarNome"
-			action="#{PessoaBean.addNome}" />
-		<br />
-		<h:dataTable value="#{PessoaBean.nomeCompletos}" var="n" >
-			<h:column>
-			<h:outputText value="#{n}"/>
-			</h:column>
-		</h:dataTable>
-
+	<h:form id="formPessoa">
+	
 		<h1>Projeto JSF</h1>
+		
+		<h:outputLabel value="Id: " />
+		<h:inputText readonly="true" value="#{pessoaBean.pessoa.id}"/>
+		
+		<br/>
+		<h:outputLabel value="Nome: " />
+		<h:inputText value="#{pessoaBean.pessoa.nome}"/>
+		
+		<br/>
+		<h:outputLabel value="Sobrenome: " />
+		<h:inputText value="#{pessoaBean.pessoa.sobreNome}"/>
+		
+		<br/>
+		<h:outputLabel value="Idade: " />
+		<h:inputText value="#{pessoaBean.pessoa.idade}"/>
+		<!-- 
+		<br/>
+		<h:outputLabel value="Data de Nascimento: " />
+		<h:inputText value="#{pessoaBean.pessoa.dataNascimento}"/>
+		 -->
+		<br/>
+		<h:commandButton value="Novo" action="#{pessoaBean.novo}"  />
+		<h:commandButton value="Salvar" action="#{pessoaBean.salvar}"  />
+		
 	</h:form>
 </h:body>
 

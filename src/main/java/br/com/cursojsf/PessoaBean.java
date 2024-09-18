@@ -1,59 +1,42 @@
 package br.com.cursojsf;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
+import br.com.dao.DAOGeneric;
+import br.com.entidades.Pessoa;
+
 @ViewScoped
-@ManagedBean(name="PessoaBean")
+@ManagedBean(name="pessoaBean")
 public class PessoaBean {
 	
-	private String nome;
-	private String sobrenome;
-	private String nomeCompleto;
+	private Pessoa pessoa = new Pessoa();
+	private DAOGeneric<Pessoa> daoGeneric = new DAOGeneric<Pessoa>();
 	
-	private List<String> nomeCompletos = new ArrayList<>();
+	public String salvar() {
+		pessoa = daoGeneric.merge(pessoa);
+		return "pessoa";
+	}
 	
-	
-	public List<String> getNomeCompletos() {
-		return nomeCompletos;
-	}
-
-	public void setNomeCompletos(List<String> nomeCompletos) {
-		this.nomeCompletos = nomeCompletos;
-	}
-	public void nomeCompleto() {
-		nomeCompleto = nome + " "+ sobrenome;
-	}
-
-	public String addNome() {
-		nomeCompleto();
-		nomeCompletos.add(nomeCompleto);
+	public String novo() {
+		pessoa = new Pessoa();
 		return "";
 	}
-	
-	public void setNomeCompleto(String nomeCompleto) {
-		this.nomeCompleto = nomeCompleto;
+
+	public Pessoa getPessoa() {
+		return pessoa;
 	}
-	public String getNomeCompleto() {
-		return nomeCompleto;
+
+	public void setPessoa(Pessoa pessoa) {
+		this.pessoa = pessoa;
 	}
-	
-	public String getNome() {
-		return nome;
+
+	public DAOGeneric<Pessoa> getDaoGeneric() {
+		return daoGeneric;
 	}
-	public void setNome(String nome) {
-		this.nome = nome;
+
+	public void setDaoGeneric(DAOGeneric<Pessoa> daoGeneric) {
+		this.daoGeneric = daoGeneric;
 	}
-	public String getSobrenome() {
-		return sobrenome;
-	}
-	public void setSobrenome(String sobrenome) {
-		this.sobrenome = sobrenome;
-	}
-	
-	
 
 }

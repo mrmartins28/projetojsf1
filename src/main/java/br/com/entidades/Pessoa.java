@@ -12,8 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-@Entity
 @ViewScoped
+@Entity
 public class Pessoa implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
