@@ -22,6 +22,12 @@ public class PessoaBean {
 		pessoa = new Pessoa();
 		return "";
 	}
+	
+	public String deletar() {
+		daoGeneric.deletar(pessoa);
+		return "";
+	}
+	
 
 	public Pessoa getPessoa() {
 		return pessoa;
