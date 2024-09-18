@@ -24,7 +24,8 @@ public class PessoaBean {
 	}
 	
 	public String deletar() {
-		daoGeneric.deletar(pessoa);
+		daoGeneric.deletarPorId(pessoa);
+		pessoa = new Pessoa();
 		return "";
 	}
 	
