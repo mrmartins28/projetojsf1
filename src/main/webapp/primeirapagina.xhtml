@@ -12,6 +12,11 @@
 
 	<h:form id="formPessoa">
 
+
+
+		<h:graphicImage height="50" width="50"
+			value="https://arquivo.devmedia.com.br/marketing/img/guia-jsf-javaserver-faces-38322.png" />
+
 		<h1>Projeto JSF</h1>
 
 		<h:panelGrid columns="2">
@@ -32,8 +37,17 @@
 			<h:outputLabel value="Idade: " />
 			<h:inputText value="#{pessoaBean.pessoa.idade}" />
 
+			<h:outputLabel value="Sexo:" />
+			<h:selectOneMenu id="campoSexo" value="#{pessoaBean.pessoa.sexo}" rendered="true" >
+				
+				<f:selectItem itemValue="NAO"  itemLabel="[-Selecione-]" noSelectionOption="true" />
+				<f:selectItem itemValue="MASCULINO"  itemLabel="Masculino" />
+				<f:selectItem itemValue="FEMININO" itemLabel="Feminino" />
 
-			<h:outputLabel value=""/>
+			</h:selectOneMenu>
+
+
+			<h:outputLabel value="" />
 			<h:panelGroup>
 				<h:commandButton value="Novo" action="#{pessoaBean.novo}" />
 				<h:commandButton value="Salvar" action="#{pessoaBean.salvar}" />
@@ -45,29 +59,35 @@
 
 
 
-		<h:dataTable value="#{pessoaBean.pessoas}" var="p" border="1" cellpadding="6">
-		
-		<f:facet name="header">
+		<h:dataTable value="#{pessoaBean.pessoas}" var="p" border="1"
+			cellpadding="6">
+
+			<f:facet name="header">
 		Lista de pessoas cadastradas
 		</f:facet>
 
 			<h:column>
-			<f:facet name="header">ID</f:facet>
+				<f:facet name="header">ID</f:facet>
 				<h:outputText value="#{p.id}" />
 			</h:column>
 
 			<h:column>
-			<f:facet name="header">Nome</f:facet>
+				<f:facet name="header">Nome</f:facet>
 				<h:outputText value="#{p.nome}" />
 			</h:column>
 
 			<h:column>
-			<f:facet name="header">Sobrenome</f:facet>
+				<f:facet name="header">Sobrenome</f:facet>
 				<h:outputText value="#{p.sobreNome}" />
+			</h:column>
+			
+				<h:column>
+				<f:facet name="header">Sexo</f:facet>
+				<h:outputText value="#{p.sexo}" />
 			</h:column>
 
 			<h:column>
-			<f:facet name="header">Ação</f:facet>
+				<f:facet name="header">Ação</f:facet>
 				<h:commandLink value="Editar">
 					<f:setPropertyActionListener value="#{p}"
 						target="#{pessoaBean.pessoa}" />
@@ -75,7 +95,7 @@
 			</h:column>
 
 			<h:column>
-			<f:facet name="header">Ação</f:facet>
+				<f:facet name="header">Ação</f:facet>
 				<h:commandLink value="Remover" action="#{pessoaBean.deletar}">
 					<f:setPropertyActionListener value="#{p}"
 						target="#{pessoaBean.pessoa}" />

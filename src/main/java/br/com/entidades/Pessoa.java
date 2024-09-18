@@ -31,12 +31,21 @@ public class Pessoa implements Serializable{
 	@Temporal(TemporalType.DATE)
 	private Date dataNascimento;
 	
+	private String sexo;
+
+	
 	public Pessoa() {
 		
 		
 	}
 	
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
+	}
 	
+	public String getSexo() {
+		return sexo;
+	}
 
 	public Long getId() {
 		return id;
