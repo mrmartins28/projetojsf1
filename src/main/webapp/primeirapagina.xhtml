@@ -58,6 +58,12 @@
 		</h:commandLink>
 		</h:column>
 		
+		<h:column>
+		<h:commandLink value="Remover"  action="#{pessoaBean.deletar}">
+		<f:setPropertyActionListener value="#{p}" target="#{pessoaBean.pessoa}"/>
+		</h:commandLink>
+		</h:column>
+		
 		</h:dataTable>
 		
 	</h:form>
