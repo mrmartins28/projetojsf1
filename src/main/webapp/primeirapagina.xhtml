@@ -47,6 +47,9 @@
 				<f:selectItem itemValue="FEMININO" itemLabel="Feminino" />
 
 			</h:selectOneMenu>
+			
+			<h:outputLabel value="Ativo" />
+			<h:selectBooleanCheckbox value="#{pessoaBean.pessoa.ativo}"  />
 
 			<h:outputLabel value="Frameworks" />
 			<h:selectManyMenu id="campoFrameworks" value="#{pessoaBean.pessoa.frameworks}" style="height:150px;" >
