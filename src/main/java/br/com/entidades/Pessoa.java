@@ -32,6 +32,8 @@ public class Pessoa implements Serializable{
 	private Date dataNascimento;
 	
 	private String sexo;
+	
+	private String[] frameworks;
 
 	
 	public Pessoa() {
@@ -39,6 +41,17 @@ public class Pessoa implements Serializable{
 		
 	}
 	
+	
+	public String[] getFrameworks() {
+		return frameworks;
+	}
+
+
+	public void setFrameworks(String[] frameworks) {
+		this.frameworks = frameworks;
+	}
+
+
 	public void setSexo(String sexo) {
 		this.sexo = sexo;
 	}

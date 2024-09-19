@@ -38,13 +38,26 @@
 			<h:inputText value="#{pessoaBean.pessoa.idade}" />
 
 			<h:outputLabel value="Sexo:" />
-			<h:selectOneMenu id="campoSexo" value="#{pessoaBean.pessoa.sexo}" rendered="true" >
-				
-				<f:selectItem itemValue="NAO"  itemLabel="[-Selecione-]" noSelectionOption="true" />
-				<f:selectItem itemValue="MASCULINO"  itemLabel="Masculino" />
+			<h:selectOneMenu id="campoSexo" value="#{pessoaBean.pessoa.sexo}"
+				rendered="true">
+
+				<f:selectItem itemValue="NAO" itemLabel="[-Selecione-]"
+					noSelectionOption="true" />
+				<f:selectItem itemValue="MASCULINO" itemLabel="Masculino" />
 				<f:selectItem itemValue="FEMININO" itemLabel="Feminino" />
 
 			</h:selectOneMenu>
+
+			<h:outputLabel value="Frameworks" />
+			<h:selectManyMenu id="campoFrameworks" value="#{pessoaBean.pessoa.frameworks}" style="height:150px;" >
+			
+			<f:selectItem itemValue="Hibernate" />
+			<f:selectItem itemValue="Spring MVC" />
+			<f:selectItem itemValue="JPA" />
+			<f:selectItem itemValue="PrimeFaces" />
+			<f:selectItem itemValue="JSF" />
+
+			</h:selectManyMenu>
 
 
 			<h:outputLabel value="" />
@@ -80,8 +93,8 @@
 				<f:facet name="header">Sobrenome</f:facet>
 				<h:outputText value="#{p.sobreNome}" />
 			</h:column>
-			
-				<h:column>
+
+			<h:column>
 				<f:facet name="header">Sexo</f:facet>
 				<h:outputText value="#{p.sexo}" />
 			</h:column>
