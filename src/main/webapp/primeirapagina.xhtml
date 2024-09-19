@@ -65,9 +65,10 @@
 
 			<h:outputLabel value="" />
 			<h:panelGroup>
-				<h:commandButton value="Novo" action="#{pessoaBean.novo}" />
-				<h:commandButton value="Salvar" action="#{pessoaBean.salvar}" />
-				<h:commandButton value="Deletar" action="#{pessoaBean.deletar}" />
+				<h:commandButton value="Novo" action="#{pessoaBean.novo}" image="/resources/img/new-account.png" title="Novo" style="height:40px;width:40px; margin-right:10px;"/>
+				<h:commandButton value="Salvar" action="#{pessoaBean.salvar}" image="/resources/img/diskette.png" title="Salvar" style="height:35px;width:35px;  margin-right:10px; " />
+				<h:commandButton value="Deletar" action="#{pessoaBean.deletar}" image="/resources/img/delete.png" title="Deletar" style="height:40px;width:40px; margin-right:10px;" />
+				<h:commandButton value="limpar" type="reset" image="/resources/img/eraser.png" title="Limpar" style="height:40px;width:40px; margin-right:10px;"/>
 			</h:panelGroup>
 
 
@@ -104,17 +105,19 @@
 
 			<h:column>
 				<f:facet name="header">Ação</f:facet>
-				<h:commandLink value="Editar">
+				<h:commandLink title="Editar" >
 					<f:setPropertyActionListener value="#{p}"
 						target="#{pessoaBean.pessoa}" />
+						<h:graphicImage value="/resources/img/edit.png" style="height:30px;width:30px;" />
 				</h:commandLink>
 			</h:column>
 
 			<h:column>
 				<f:facet name="header">Ação</f:facet>
-				<h:commandLink value="Remover" action="#{pessoaBean.deletar}">
+				<h:commandLink action="#{pessoaBean.deletar}" title="Deletar" >
 					<f:setPropertyActionListener value="#{p}"
 						target="#{pessoaBean.pessoa}" />
+						<h:graphicImage value="/resources/img/remove.png" style="height:30px;width:30px;" />
 				</h:commandLink>
 			</h:column>
 
