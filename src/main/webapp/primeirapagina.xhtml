@@ -5,13 +5,22 @@
 	xmlns:f="http://java.sun.com/jsf/core">
 
 <h:head>
-			
+
 	<title>Cadastro de Usuário</title>
 </h:head>
 
 <h:body>
 
-	<h:form id="formPessoa">
+	<h:form>
+	
+	<h:commandLink value="Administração" action="lancamento" style="margin-left:1cm;" />
+	<h:commandLink value="Lançamentos" action="primeirapagina" style="margin-left:1cm;" />
+	<h:commandLink value="Trocar Usuário" action="index" style="margin-left:1cm;" />
+
+
+	</h:form>
+
+	<h:form id="formPessoa" rendered="#{pessoaBean.permitirAcesso('ADMINISTRADOR')}">
 
 
 
@@ -65,7 +74,7 @@
 
 			<h:outputLabel value="Senha:" />
 			<h:inputSecret value="#{pessoaBean.pessoa.senha}" />
-			
+
 			<h:outputLabel value="Perfil" />
 			<h:selectOneMenu id="campoPerfil" value="#{pessoaBean.pessoa.perfil}"
 				rendered="true">
@@ -75,7 +84,7 @@
 				<f:selectItem itemValue="ADMINISTRADOR" itemLabel="Administrador" />
 				<f:selectItem itemValue="SECRETÁRIO" itemLabel="Secretário" />
 				<f:selectItem itemValue="RECEPCIONISTA" itemLabel="Recepcionista" />
-				
+
 
 			</h:selectOneMenu>
 
@@ -90,7 +99,8 @@
 					style="height:35px;width:35px;  margin-right:10px; " />
 				<h:commandButton value="Deletar" action="#{pessoaBean.deletar}"
 					image="/resources/img/delete.png" title="Deletar"
-					style="height:40px;width:40px; margin-right:10px;" rendered="#{pessoaBean.permitirAcesso('ADMINISTRADOR')}" />
+					style="height:40px;width:40px; margin-right:10px;"
+					rendered="#{pessoaBean.permitirAcesso('ADMINISTRADOR')}" />
 				<h:commandButton value="limpar" type="reset"
 					image="/resources/img/eraser.png" title="Limpar"
 					style="height:40px;width:40px; margin-right:10px;" />
@@ -102,7 +112,7 @@
 
 
 		<h:dataTable value="#{pessoaBean.pessoas}" var="p" border="1"
-			cellpadding="6">
+			cellpadding="6" rendered="#{pessoaBean.permitirAcesso('ADMINISTRADOR')}">
 
 			<f:facet name="header">
 		Lista de Usuários Cadastrados
@@ -138,7 +148,7 @@
 				</h:commandLink>
 			</h:column>
 
-			<h:column rendered="#{pessoaBean.permitirAcesso('ADMINISTRADOR')}" >
+			<h:column rendered="#{pessoaBean.permitirAcesso('ADMINISTRADOR')}">
 				<f:facet name="header">Ação</f:facet>
 				<h:commandLink action="#{pessoaBean.deletar}" title="Deletar">
 					<f:setPropertyActionListener value="#{p}"
