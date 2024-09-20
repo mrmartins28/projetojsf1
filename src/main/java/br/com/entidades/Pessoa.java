@@ -36,6 +36,12 @@ public class Pessoa implements Serializable{
 	private String[] frameworks;
 	
 	private Boolean ativo;
+	
+	private String login;
+	
+	private String senha;
+	
+	private String perfil;
 
 	
 	public Pessoa() {
@@ -43,6 +49,44 @@ public class Pessoa implements Serializable{
 		
 	}
 	
+	
+	
+	public String getPerfil() {
+		return perfil;
+	}
+
+
+
+	public void setPerfil(String perfil) {
+		this.perfil = perfil;
+	}
+
+
+
+	public String getLogin() {
+		return login;
+	}
+
+
+
+	public void setLogin(String login) {
+		this.login = login;
+	}
+
+
+
+	public String getSenha() {
+		return senha;
+	}
+
+
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
+
+
 	public void setAtivo(Boolean ativo) {
 		this.ativo = ativo;
 	}
