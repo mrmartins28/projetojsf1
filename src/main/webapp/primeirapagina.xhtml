@@ -5,6 +5,7 @@
 	xmlns:f="http://java.sun.com/jsf/core">
 
 <h:head>
+			
 	<title>Cadastro de Usuário</title>
 </h:head>
 
@@ -71,7 +72,7 @@
 
 				<f:selectItem itemValue="NAO" itemLabel="[-Selecione-]"
 					noSelectionOption="true" />
-				<f:selectItem itemValue="ADMNINSTRADOR" itemLabel="Administrador" />
+				<f:selectItem itemValue="ADMINISTRADOR" itemLabel="Administrador" />
 				<f:selectItem itemValue="SECRETÁRIO" itemLabel="Secretário" />
 				<f:selectItem itemValue="RECEPCIONISTA" itemLabel="Recepcionista" />
 				
@@ -89,7 +90,7 @@
 					style="height:35px;width:35px;  margin-right:10px; " />
 				<h:commandButton value="Deletar" action="#{pessoaBean.deletar}"
 					image="/resources/img/delete.png" title="Deletar"
-					style="height:40px;width:40px; margin-right:10px;" />
+					style="height:40px;width:40px; margin-right:10px;" rendered="#{pessoaBean.permitirAcesso('ADMINISTRADOR')}" />
 				<h:commandButton value="limpar" type="reset"
 					image="/resources/img/eraser.png" title="Limpar"
 					style="height:40px;width:40px; margin-right:10px;" />
@@ -137,7 +138,7 @@
 				</h:commandLink>
 			</h:column>
 
-			<h:column>
+			<h:column rendered="#{pessoaBean.permitirAcesso('ADMINISTRADOR')}" >
 				<f:facet name="header">Ação</f:facet>
 				<h:commandLink action="#{pessoaBean.deletar}" title="Deletar">
 					<f:setPropertyActionListener value="#{p}"
