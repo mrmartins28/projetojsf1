@@ -37,6 +37,7 @@ public class DAOGeneric<E> {
 		return retorno;
 	}
 	
+	
 	public void deletar(E entidade) {
 
 		EntityManager entityManager = JPAUtil.getEntityManager();
