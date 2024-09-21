@@ -103,11 +103,11 @@
 					</h:commandLink>
 				</h:column>
 
-				<h:column rendered="#{pessoaBean.permitirAcesso('ADMINISTRADOR')}">
+				<h:column >
 					<f:facet name="header">Ação</f:facet>
 					<h:commandLink action="#{lancamentoBean.deletar}" title="Deletar">
 						<f:setPropertyActionListener value="#{p}"
-							target="#{pessoaBean.pessoa}" />
+							target="#{lancamentoBean.lancamento}" />
 						<h:graphicImage value="/resources/img/remove.png"
 							style="height:30px;width:30px;" />
 					</h:commandLink>
