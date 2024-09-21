@@ -44,11 +44,22 @@ public class Pessoa implements Serializable{
 	private String perfil;
 	
 	private String escolaridade;
+	
+	private Integer[] linguagens;
+	
 
 	
 	public Pessoa() {
 		
 		
+	}
+	
+	public void setLinguagens(Integer[] linguagens) {
+		this.linguagens = linguagens;
+	}
+	
+	public Integer[] getLinguagens() {
+		return linguagens;
 	}
 	
 	public void setEscolaridade(String escolaridade) {
