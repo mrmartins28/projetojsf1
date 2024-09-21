@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+	<title>Lançamentos</title>
+</h:head>
+
+<h:body>
+
+	<h:form>
+
+		<h:commandLink value="Administração" action="primeirapagina"
+			style="margin-left:1cm;" />
+		<h:commandLink value="Lançamentos" action="lancamento"
+			style="margin-left:1cm;" />
+		<h:commandLink value="Trocar Usuário" action="index"
+			style="margin-left:1cm;" />
+
+
+	</h:form>
+
+	<h:form id="formLancamento" style="margin-top:17%;margin-left:40%;">
+
+		<h:form>
+			<h:panelGrid columns="2">
+
+				<f:facet name="header">
+					<h:outputText value="Lançamentos" />
+				</f:facet>
+
+				<h:outputLabel value="ID:" />
+				<h:inputText value="#{lancamentoBean.lancamento.id}" readonly="true" />
+
+				<h:outputLabel value="Numero Nota: " />
+				<h:inputText value="#{lancamentoBean.lancamento.numeroNotaFiscal}" />
+
+				<h:outputLabel value="Empresa Origem: " />
+				<h:inputText value="#{lancamentoBean.lancamento.empresaOrigem}" />
+
+				<h:outputLabel value="Empresa Destino: " />
+				<h:inputText value="#{lancamentoBean.lancamento.empresaDestino}" />
+
+				<h:outputLabel value="" />
+				<h:panelGroup>
+					<h:commandButton value="Novo" action="#{lancamentoBean.novo}"
+						image="/resources/img/new-account.png" title="Novo"
+						style="height:40px;width:40px; margin-right:10px;" />
+					<h:commandButton value="Salvar" action="#{lancamentoBean.salvar}"
+						image="/resources/img/diskette.png" title="Salvar"
+						style="height:35px;width:35px;  margin-right:10px; " />
+					<h:commandButton value="Deletar" action="#{lancamentoBean.deletar}"
+						image="/resources/img/delete.png" title="Deletar"
+						style="height:40px;width:40px; margin-right:10px;" />
+					<h:commandButton value="limpar" type="reset"
+						image="/resources/img/eraser.png" title="Limpar"
+						style="height:40px;width:40px; margin-right:10px;" />
+				</h:panelGroup>
+
+			</h:panelGrid>
+
+			<h:dataTable value="#{lancamentoBean.lancamentos}" var="l" border="1"
+				cellpadding="6" style="margin-right:20%" >
+
+				<f:facet name="header">
+				Lista de Lançamentos
+				</f:facet>
+
+				<h:column>
+					<f:facet name="header">ID</f:facet>
+					<h:outputText value="#{l.id}" />
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">Numero Nota</f:facet>
+					<h:outputText value="#{l.numeroNotaFiscal}" />
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">Usuário</f:facet>
+					<h:outputText value="#{l.usuario.nome}" />
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">Empresa de Origem</f:facet>
+					<h:outputText value="#{l.empresaOrigem}" />
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">Empresa de Destino</f:facet>
+					<h:outputText value="#{l.empresaDestino}" />
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">Ação</f:facet>
+					<h:commandLink title="Editar">
+						<f:setPropertyActionListener value="#{l}"
+							target="#{lancamentoBean.lancamento}" />
+						<h:graphicImage value="/resources/img/edit.png"
+							style="height:30px;width:30px;" />
+					</h:commandLink>
+				</h:column>
+
+				<h:column rendered="#{pessoaBean.permitirAcesso('ADMINISTRADOR')}">
+					<f:facet name="header">Ação</f:facet>
+					<h:commandLink action="#{lancamentoBean.deletar}" title="Deletar">
+						<f:setPropertyActionListener value="#{p}"
+							target="#{pessoaBean.pessoa}" />
+						<h:graphicImage value="/resources/img/remove.png"
+							style="height:30px;width:30px;" />
+					</h:commandLink>
+				</h:column>
+
+			</h:dataTable>
+
+		</h:form>
+
+	</h:form>
+</h:body>
+</html>
