@@ -2,7 +2,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a="http://xmlns.jcp.org/jsf/core"
+	xmlns:c="http://xmlns.jcp.org/jsf/html">
 
 <h:head>
 
@@ -103,7 +105,9 @@
 					rendered="#{pessoaBean.permitirAcesso('ADMINISTRADOR')}" />
 				<h:commandButton value="limpar" type="reset"
 					image="/resources/img/eraser.png" title="Limpar"
-					style="height:40px;width:40px; margin-right:10px;" />
+					style="height:40px;width:40px; margin-right:10px;">
+					<a:ajax render="@form" resetValues="true" />
+					</h:commandButton>
 			</h:panelGroup>
 
 

@@ -6,6 +6,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.component.UIViewRoot;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
@@ -19,6 +20,7 @@ import br.com.repository.IDaoLancamentosImpl;
 @ManagedBean(name = "lancamentoBean")
 public class LancamentoBean {
 	
+	private PessoaBean pessoaBean = new PessoaBean();
 	private Lancamento lancamento = new Lancamento();
 	private DAOGeneric<Lancamento> daoGeneric = new DAOGeneric<Lancamento>();
 	private List<Lancamento> lancamentos = new ArrayList<Lancamento>();
@@ -40,9 +42,8 @@ public class LancamentoBean {
 	
 	@PostConstruct
 	public void carregarLancamentos(){
-		FacesContext context = FacesContext.getCurrentInstance();
-		ExternalContext  externalContext = context.getExternalContext();
-		Pessoa pessoaUser = (Pessoa) externalContext.getSessionMap().get("usuarioLogado");
+		
+		Pessoa pessoaUser = pessoaBean.userLogado();
 		
 		lancamentos = iDaoLancamento.consultar(pessoaUser.getId());
 	}
@@ -58,6 +59,14 @@ public class LancamentoBean {
 		daoGeneric.deletarPorId(lancamento);
 		lancamento = new Lancamento();
 		carregarLancamentos();
+		return "";
+	}
+	public String limparForm() {
+		FacesContext ctx = FacesContext.getCurrentInstance();
+		List<String> clientIds = new ArrayList<String>();
+		clientIds.add("formLancamento");
+		UIViewRoot view = ctx.getViewRoot();
+		view.resetValues(ctx, clientIds); // reseta os componentes da lista
 		return "";
 	}
 	
