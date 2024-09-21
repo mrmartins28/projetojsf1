@@ -89,6 +89,12 @@
 
 
 			</h:selectOneMenu>
+			
+			<h:outputLabel value="Escolaridade" />
+			<h:selectOneRadio value="#{pessoaBean.pessoa.escolaridade}">
+				<f:selectItem itemLabel="Ensino Médio" itemValue="M" />
+				<f:selectItem itemLabel="Ensino Superior" itemValue="S" />
+			</h:selectOneRadio>
 
 
 			<h:outputLabel value="" />
@@ -106,7 +112,7 @@
 				<h:commandButton value="limpar" type="reset"
 					image="/resources/img/eraser.png" title="Limpar"
 					style="height:40px;width:40px; margin-right:10px;">
-					<a:ajax render="@form" resetValues="true" />
+					<a:ajax render="@form" resetValues="true" />   <!-- Ajax usado para limpar o formulário -->
 					</h:commandButton>
 			</h:panelGroup>
 

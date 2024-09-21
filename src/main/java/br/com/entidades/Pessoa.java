@@ -42,6 +42,8 @@ public class Pessoa implements Serializable{
 	private String senha;
 	
 	private String perfil;
+	
+	private String escolaridade;
 
 	
 	public Pessoa() {
@@ -49,6 +51,13 @@ public class Pessoa implements Serializable{
 		
 	}
 	
+	public void setEscolaridade(String escolaridade) {
+		this.escolaridade = escolaridade;
+	}
+	
+	public String getEscolaridade() {
+		return escolaridade;
+	}
 	
 	
 	public String getPerfil() {
