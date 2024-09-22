@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.ExternalContext;
@@ -27,7 +28,14 @@ public class PessoaBean {
 	public String salvar() {
 		pessoa = daoGeneric.merge(pessoa);
 		carregarPessoas();
+		mostrarMensagem("Usuário Salvo com sucesso");
 		return "pessoa";
+	}
+	
+	public void mostrarMensagem(String msg) {
+		FacesContext context = FacesContext.getCurrentInstance();
+		FacesMessage message = new FacesMessage(msg);
+		context.addMessage(null, message);
 	}
 	
 	public List<Pessoa> getPessoas() {
