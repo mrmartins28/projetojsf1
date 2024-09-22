@@ -55,6 +55,7 @@ public class PessoaBean {
 		daoGeneric.deletarPorId(pessoa);
 		pessoa = new Pessoa();
 		carregarPessoas();
+		mostrarMensagem("Usuário deletado com sucesso!");
 		return "";
 	}
 	
