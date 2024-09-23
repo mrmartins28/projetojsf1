@@ -3,6 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:a="http://xmlns.jcp.org/jsf/core"
 	xmlns:c="http://xmlns.jcp.org/jsf/html">
 
@@ -13,17 +14,7 @@
 
 <h:body>
 
-	<h:form>
-
-		<h:commandLink value="Administração" action="primeirapagina"
-			style="margin-left:1cm;" />
-		<h:commandLink value="Lançamentos" action="lancamento"
-			style="margin-left:1cm;" />
-		<h:commandLink value="Trocar Usuário" action="index"
-			style="margin-left:1cm;" />
-
-
-	</h:form>
+	<ui:include src="/menu.xhtml"/>
 
 	<h:form id="formPessoa"
 		rendered="#{pessoaBean.permitirAcesso('ADMINISTRADOR')}">
