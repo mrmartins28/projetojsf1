@@ -53,8 +53,8 @@
 			</h:selectOneMenu>
 			
 			<h:outputLabel value="Data de Nascimento" />
-			<h:inputText value="#{pessoaBean.pessoa.dataNascimento}">
-			<f:convertDateTime pattern="dd/MM/yyyy" />
+			<h:inputText value="#{pessoaBean.pessoa.dataNascimento}" converterMessage="Data de nascimento errada" >
+			<f:convertDateTime pattern="dd/MM/yyyy" locale="pt_BR" timeZone="GMT-03:00"/>
 			</h:inputText>
 
 
