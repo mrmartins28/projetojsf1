@@ -34,7 +34,8 @@
 
 			<h:outputLabel value="Nome: " />
 			<h:inputText value="#{pessoaBean.pessoa.nome}" required="true"
-				requiredMessage="Informe o nome do usuário!" validatorMessage="Nome deve ter no mínimo 10 letras!">
+				requiredMessage="Informe o nome do usuário!"
+				validatorMessage="Nome deve ter no mínimo 10 letras!">
 				<f:validateLength minimum="10" maximum="50" />
 			</h:inputText>
 
@@ -114,9 +115,11 @@
 
 			<h:outputLabel value="" />
 			<h:panelGroup>
-				<h:commandButton value="Novo" action="#{pessoaBean.novo}"
+				<h:commandButton value="Novo" id="botaoNovo" action="#{pessoaBean.novo}"
 					image="/resources/img/new-account.png" title="Novo"
-					style="height:40px;width:40px; margin-right:10px;" />
+					style="height:40px;width:40px; margin-right:10px;" >
+					<a:ajax execute="botaoNovo"  render="@form" />
+					</h:commandButton>
 				<h:commandButton value="Salvar" action="#{pessoaBean.salvar}"
 					image="/resources/img/diskette.png" title="Salvar"
 					style="height:35px;width:35px;  margin-right:10px; " />
@@ -124,10 +127,10 @@
 					image="/resources/img/delete.png" title="Deletar"
 					style="height:40px;width:40px; margin-right:10px;"
 					rendered="#{pessoaBean.permitirAcesso('ADMINISTRADOR')}" />
-				<h:commandButton value="limpar" type="reset"
+				<h:commandButton value="limpar" id="botaoLimpar" type="reset"
 					image="/resources/img/eraser.png" title="Limpar"
 					style="height:40px;width:40px; margin-right:10px;">
-					<a:ajax render="@form" resetValues="true" />
+					<a:ajax execute="botaoLimpar" render="@form" resetValues="true" />
 					<!-- Ajax usado para limpar o formulário -->
 				</h:commandButton>
 			</h:panelGroup>
@@ -135,8 +138,9 @@
 
 		</h:panelGrid>
 
+	</h:form>
 
-
+	<h:form>
 		<h:dataTable value="#{pessoaBean.pessoas}" var="p" border="1"
 			cellpadding="6"
 			rendered="#{pessoaBean.permitirAcesso('ADMINISTRADOR')}">

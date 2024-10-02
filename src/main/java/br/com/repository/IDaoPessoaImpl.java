@@ -17,7 +17,8 @@ public class IDaoPessoaImpl implements IDaoPessoa {
 		EntityTransaction transaction = entityManager.getTransaction();
 		transaction.begin();
 		try {
-			pessoa = (Pessoa) entityManager.createQuery("select p from Pessoa p where p.login = '" + login + "' and p.senha = '"+ senha +"'").getSingleResult();
+			pessoa = (Pessoa) entityManager.createQuery("select p from Pessoa p where p.login = '" + login + "' and p.senha = '"+ senha +"'")
+					.getSingleResult();
 
 		} catch (Exception e) {
 			pessoa = null;
