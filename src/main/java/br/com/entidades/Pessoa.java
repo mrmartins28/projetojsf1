@@ -47,11 +47,21 @@ public class Pessoa implements Serializable{
 	
 	private Integer[] linguagens;
 	
+	private String CEP;
+	
 
 	
 	public Pessoa() {
 		
 		
+	}
+	
+	public void setCEP(String cEP) {
+		CEP = cEP;
+	}
+	
+	public String getCEP() {
+		return CEP;
 	}
 	
 	public void setLinguagens(Integer[] linguagens) {

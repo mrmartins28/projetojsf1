@@ -1,5 +1,10 @@
 package br.com.cursojsf;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,6 +14,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+import javax.faces.event.AjaxBehaviorEvent;
 
 import br.com.dao.DAOGeneric;
 import br.com.entidades.Pessoa;
@@ -49,6 +55,32 @@ public class PessoaBean {
 	public String novo() {
 		pessoa = new Pessoa();
 		return "";
+	}
+	
+	public void pesquisaCep(AjaxBehaviorEvent event) {
+		
+		try {
+			
+			URL url = new URL("https://viacep.com.br/ws/"+ pessoa.getCEP() +"/json/");
+			URLConnection connection = url.openConnection();
+			InputStream stream = connection.getInputStream();
+			BufferedReader reader = new BufferedReader(new InputStreamReader(stream, "UTF-8"));
+			
+			String cep = "";
+			StringBuilder jsonCep = new StringBuilder();
+			
+			while ((cep= reader.readLine()) != null) {
+			
+				jsonCep.append(cep);
+			}
+			
+			System.out.println(jsonCep);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			mostrarMensagem("Erro ao consultar CEP!");
+		}
+		
 	}
 	
 	public String deletar() {
